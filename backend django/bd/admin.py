@@ -10,8 +10,8 @@ class DrinkAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 class AdminAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email')
-    search_fields = ('name', 'email')
+    list_display = ('name',)
+    search_fields = ('name',)
 
 admin.site.register(Pizza, PizzaAdmin)
 admin.site.register(Drink, DrinkAdmin)

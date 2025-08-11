@@ -19,21 +19,21 @@ class Drink(models.Model):
 
 class Admin(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do administrador: ", null=True)
-    email = models.EmailField(max_length=100, verbose_name="Email do administrador: ", null=True)
     cpf = models.CharField(max_length=14, verbose_name="CPF do administrador: ", null=True)
     password = models.CharField(max_length=100, verbose_name="Senha do administrador: ", null=True)
 
     def save(self, *args, **kwargs):
-        if not self.password:
-            self.password = "admin123"
-        super().save(*args, **kwargs)
+        if not self.password == "admin123":
+            super().save(*args, **kwargs)
 
+        else:
+            raise ValueError("A senha inválida.")
+    
     def __str__(self):
         return self.name
 
 class Customer(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do cliente: ", null=True)
-    email = models.EmailField(max_length=100, verbose_name="Email do cliente: ", null=True)
     cpf = models.CharField(max_length=14, verbose_name="CPF do cliente: ", null=True)
     password = models.CharField(max_length=100, verbose_name="Senha do cliente: ", null=True)
 
