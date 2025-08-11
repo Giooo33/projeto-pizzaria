@@ -19,7 +19,7 @@ class Drink(models.Model):
 
 class Admin(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do administrador: ", null=True)
-    email = models.EmailField(max_length=100, verbose_name="Email do administrador: ", null=True)
+    telephone = models.CharField(max_length=13, verbose_name="Telefone do administrador: ", null=True)
     cpf = models.CharField(max_length=14, verbose_name="CPF do administrador: ", null=True)
     password = models.CharField(max_length=100, verbose_name="Senha do administrador: ", null=True)
 
@@ -33,9 +33,10 @@ class Admin(models.Model):
 
 class Customer(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do cliente: ", null=True)
-    email = models.EmailField(max_length=100, verbose_name="Email do cliente: ", null=True)
+    telephone = models.CharField(max_length=13, verbose_name="Telefone do cliente: ", null=True)
     cpf = models.CharField(max_length=14, verbose_name="CPF do cliente: ", null=True)
     password = models.CharField(max_length=100, verbose_name="Senha do cliente: ", null=True)
+    address = models.CharField(max_length=100, verbose_name="Endereço do cliente", null= True)
 
     def __str__(self):
         return self.name
