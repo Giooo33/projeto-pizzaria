@@ -24,11 +24,14 @@ class Admin(models.Model):
     password = models.CharField(max_length=100, verbose_name="Senha do administrador: ", null=True)
 
     def save(self, *args, **kwargs):
-        if not self.password == "admin123":
+        if self.password == "admin123":
             super().save(*args, **kwargs)
 
         else:
             raise ValueError("A senha inválida.")
+            
+
+        
     
     def __str__(self):
         return self.name
