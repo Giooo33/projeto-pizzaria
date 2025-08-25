@@ -1,16 +1,24 @@
-
-#aqui eu vou criar um validator de senha para o admin
-# se a senha for igual a "admin123" ela esta certa, se não estiver, ela vai retornar um erro e
-#não vai deixar o admin ser criado 
-# e o admin tera que colocar uma senha ate ser valida por 5 vezes 
-
+import re
+from validate_docbr import CPF
 from django.core.exceptions import ValidationError
 
-def validate_password(password):
-    if password != "admin123":
+def cpf_validate(value):
+    cpf = CPF()
+    if not cpf.validate(value):
         raise ValidationError(
-            ('%(password)s is not a valid password.'),
-            params={'password': password},
-        )
-    return password
+            ("%(value)s is not a valid CPF"),
+            params={"value": value},
+    ) 
 
+def telefone_validate(value):
+    if not value.isdigit():
+        raise ValidationError(
+                ("%(value)s is not a valid phone number"),
+                params={"value": value},
+            )
+    if len(value) != 11:
+        raise ValidationError(
+            ("%(value)s must be 11 digits"),
+            params={"value": value},
+        )
+    return value

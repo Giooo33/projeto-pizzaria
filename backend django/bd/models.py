@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from bd.validate import cpf_validate, telefone_validate
 
 def validate_password(password):
     if password != "admin123":
@@ -56,8 +57,8 @@ class Drink(models.Model):
 
 class Admin(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do administrador: ", null=True)
-    telephone = models.CharField(max_length=13, verbose_name="Telefone do administrador: ", null=True)
-    cpf = models.CharField(max_length=14, verbose_name="CPF do administrador: ", null=True)
+    telephone = models.CharField(max_length=13, validators=[telefone_validate], verbose_name="Telefone do administrador: ", null=True)
+    cpf = models.CharField(max_length=14, validators=[cpf_validate], verbose_name="CPF do administrador: ", null=True)
     password = models.CharField(max_length=100, validators=[validate_password], verbose_name="Senha de Admin: ", blank=True, null=True)
             
     def __str__(self):
@@ -65,8 +66,8 @@ class Admin(models.Model):
 
 class Customer(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nome do cliente: ", null=True)
-    telephone = models.CharField(max_length=13, verbose_name="Telefone do cliente: ", null=True)
-    cpf = models.CharField(max_length=14, verbose_name="CPF do cliente: ", null=True)
+    telephone = models.CharField(max_length=13, validators=[telefone_validate], verbose_name="Telefone do cliente: ", null=True)
+    cpf = models.CharField(max_length=14, validators=[cpf_validate], verbose_name="CPF do cliente: ", null=True)
     password = models.CharField(max_length=100, verbose_name="Senha do cliente: ", null=True)
     address = models.CharField(max_length=100, verbose_name="Endereço do cliente", null= True)
 
