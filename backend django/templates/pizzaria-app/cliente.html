@@ -1,0 +1,32 @@
+{% extends 'pizzaria_app/base.html' %}
+
+{% block conteudo %}
+    <h2>Cardápio</h2>
+    <h3>Pizzas</h3>
+    <div class="pizza-lista">
+        {% for pizza in pizzas %}
+            <div class="pizza-item">
+                <h4>{{ pizza.name }}</h4>
+                <p>{{ pizza.ingredients }}</p>
+                <p>Tamanho: {{ pizza.class_choices.tamanhos_nome }}</p>
+                <p>R$ {{ pizza.price }}</p>
+                <button onclick="adicionarAoCarrinho({{ pizza.id }})">Adicionar ao Carrinho</button>
+            </div>
+        {% empty %}
+            <p>Nenhuma pizza cadastrada.</p>
+        {% endfor %}
+    </div>
+    <h3>Drinks</h3>
+    <div class="drink-lista">
+        {% for drink in drinks %}
+            <div class="drink-item">
+                <h4>{{ drink.name }}</h4>
+                <p>Volume: {{ drink.class_choices.volumes_nome }}</p>
+                <p>R$ {{ drink.price }}</p>
+                <button onclick="adicionarAoCarrinho({{ drink.id }})">Adicionar ao Carrinho</button>
+            </div>
+        {% empty %}
+            <p>Nenhum drink cadastrado.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
