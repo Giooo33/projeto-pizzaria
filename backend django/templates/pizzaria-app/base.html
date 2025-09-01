@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} - Pizzaria Delícia</title>
+    <link rel="stylesheet" href="/static/css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Pizzaria Delícia</h1>
+        <nav>
+            <a href="{% url 'home' %}">Início</a>
+            {% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                    <a href="{% url 'admin' %}">Painel Admin</a>
+                {% else %}
+                    <a href="{% url 'cliente' %}">Cardápio</a>
+                {% endif %}
+                <a href="{% url 'logout' %}">Sair</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p class="{{ message.tags }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block conteudo %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 Central de Pizzas</p>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
