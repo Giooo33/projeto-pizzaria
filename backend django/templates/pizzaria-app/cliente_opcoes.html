@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzaria - Escolha seu Cadastro</title>
+    <title>Opções de Customer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
     <div class="container mt-5 text-center">
-        <h1>Bem-vindo à Pizzaria</h1>
-        <h3>Escolha o tipo de cadastro</h3>
+        <h2>Escolha uma Opção</h2>
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Cadastro como Customer</h5>
-                        <p class="card-text">Cadastre-se ou entre para fazer pedidos!</p>
-                        <a href="{% url 'cliente_opcoes' %}" class="btn btn-success">Cadastrar como Customer</a>
+                        <h5 class="card-title">Cadastrar</h5>
+                        <p class="card-text">Crie uma nova conta de customer.</p>
+                        <a href="{% url 'cadastro_cliente' %}" class="btn btn-success">Cadastrar</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Cadastro como Admin</h5>
-                        <p class="card-text">Cadastre-se para gerenciar pizzas e pedidos.</p>
-                        <a href="{% url 'cadastro_admin' %}" class="btn btn-primary">Cadastrar como Admin</a>
+                        <h5 class="card-title">Entrar</h5>
+                        <p class="card-text">Faça login em uma conta existente.</p>
+                        <a href="{% url 'login_cliente' %}" class="btn btn-primary">Entrar</a>
                     </div>
                 </div>
             </div>
         </div>
+        <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Voltar</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
